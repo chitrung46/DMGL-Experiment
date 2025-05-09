@@ -173,7 +173,7 @@ class DMGL(nn.Module):
                  propalpha=0.05,
                  layer_norm_affline=True            
                  ):
-        super(ESG, self).__init__()
+        super(DMGL, self).__init__()
        
         self.n_blocks = n_blocks
         self.dropout = dropout
