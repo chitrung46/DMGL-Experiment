@@ -201,7 +201,7 @@ def main(runid):
 
     # Load the best saved model.
     with open(model_path, 'rb') as f:
-        engine.model = torch.load(f)
+        engine.model = torch.load(f, weights_only=False)
 
     print("Training finished")
     print('Best epoch:', bestid)
