@@ -68,6 +68,8 @@ def get_node_fea(data_set, train_num=0.6):
         # print(df.shape)
         scaler = StandardScaler(df.mean(),df.std())
         train_feas = scaler.transform(df)
+
+    print(f'train_fea shape: {train_feas.shape}')
     return train_feas
 
 class DataLoaderS(object):
