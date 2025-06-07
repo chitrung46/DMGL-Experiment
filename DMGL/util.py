@@ -54,7 +54,7 @@ def get_node_fea(data_set, train_num=0.6):
         for key in x.keys():
             data.append(x[key][:])
         data = np.stack(data, axis=1)
-        num_train = 3072
+        num_train = 3049
         df = data[:num_train]
         scaler = StandardScaler(df.mean(),df.std())
         train_feas = scaler.transform(df).reshape([-1,df.shape[2]])
