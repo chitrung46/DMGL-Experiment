@@ -55,7 +55,7 @@ parser.add_argument('--end_channels',type=int,default=128,help='end channels')
 parser.add_argument('--kernel_set',type=list,default=[2,6],help='the kernel set in TCN')
 parser.add_argument('--dilation_exponential',type=int,default=1,help='dilation exponential')
 parser.add_argument('--gcn_depth',type=int,default=2,help='graph convolution depth')
-parser.add_argument('--fc_dim',type=int,default= 95744,help='fc_dim') #bike 95744 taxi 95744
+parser.add_argument('--fc_dim',type=int,default= 95744,help='fc_dim') # (num_train - 9)*2*16: nyc-bike, nyc-taxi 95744 | bos-bike, bay-bike, dc-bike 97280
 parser.add_argument('--st_embedding_dim',type=int,default=40,help='the dimension of static node representation')
 parser.add_argument('--dropout',type=float,default=0.3,help='dropout rate')
 parser.add_argument('--propalpha',type=float,default=0.05,help='prop alpha')
