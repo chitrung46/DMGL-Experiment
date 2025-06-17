@@ -65,8 +65,8 @@ class Evolving_GConv(nn.Module):
 
             dy_graph, states_dy= self.scale_spc_EGL(input_state_i, states_dy)
             # dy_graph= self.scale_spc_EGL(input_state_i, states_dy)
-            # print(dy_graph)
-            # print(dy_graph.shape)# 16,266,266
+            print(dy_graph)
+            print(dy_graph.shape)# 16,266,266
             # dy_graph=self.adj.unsqueeze(0).repeat(16,1,1)
             x_out.append(self.gconv(x_i, dy_graph))  #GCN
         
