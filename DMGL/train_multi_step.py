@@ -70,14 +70,11 @@ parser.add_argument('--clip',type=int,default=5,help='clip')
 parser.add_argument('--step_size1',type=int,default=2500,help='step_size')
 parser.add_argument('--step_size2',type=int,default=100,help='step_size')
 
-
 parser.add_argument('--epochs',type=int,default=300,help='')
 parser.add_argument('--early_stop',type=str_to_bool,default=True,help='')
 parser.add_argument('--early_stop_steps',type=int,default=30,help='')
 parser.add_argument('--print_interval',type=int,default=50,help='')
 parser.add_argument('--runs',type=int,default=10,help='number of runs')
-
-
 
 args = parser.parse_args()
 torch.set_num_threads(3)
