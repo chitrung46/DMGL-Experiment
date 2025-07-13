@@ -56,17 +56,7 @@ def get_node_fea(data_set, train_num=0.6):
         df = data[:num_train]
         scaler = StandardScaler(df.mean(),df.std())
         train_feas = scaler.transform(df).reshape([-1,df.shape[2]])
-    if data_set == 'dc5-taxi':
-        x = h5py.File(path, 'r')
-        data = list()
-        for key in x.keys():
-            data.append(x[key][:])
-        data = np.stack(data, axis=1)
-        num_train = 1609 #bike taxi
-        df = data[:num_train]
-        scaler = StandardScaler(df.mean(),df.std())
-        train_feas = scaler.transform(df).reshape([-1,df.shape[2]])
-    elif data_set == 'bos-bike' or data_set== 'bay-bike' or data_set== 'dc-bike' or data_set== 'dc-taxi' or data_set== 'chi-taxi' or data_set== 'dc1-taxi':
+    elif data_set == 'bos-bike' or data_set== 'bay-bike' or data_set== 'dc-bike' or data_set== 'dc-taxi' or data_set== 'chi-taxi' or data_set== 'dc1-taxi' or data_set== 'dc5-taxi':
         x = h5py.File(path, 'r')
         data = list()
         for key in x.keys():
