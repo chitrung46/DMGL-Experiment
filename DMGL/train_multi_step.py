@@ -8,6 +8,7 @@ from trainer import Trainer
 
 from model.DMGL import DMGL
 import sys,os
+import random
 from evaluate import get_scores
 
 
