@@ -41,6 +41,8 @@ def get_node_fea(data_set, train_num=0.6):
         path = 'data/h5data/pems03.h5'
     elif data_set == 'dc5-taxi':
         path = 'data/h5data/dc5-taxi.h5'
+    elif data_set == 'dc6-taxi':
+        path = 'data/h5data/dc6-taxi.h5'
     else:
         raise ('No such dataset........................................')
 
@@ -63,6 +65,16 @@ def get_node_fea(data_set, train_num=0.6):
             data.append(x[key][:])
         data = np.stack(data, axis=1)
         num_train = 3049
+        df = data[:num_train]
+        scaler = StandardScaler(df.mean(),df.std())
+        train_feas = scaler.transform(df).reshape([-1,df.shape[2]])
+    elif data_set == 'dc6-taxi':
+        x = h5py.File(path, 'r')
+        data = list()
+        for key in x.keys():
+            data.append(x[key][:])
+        data = np.stack(data, axis=1)
+        num_train = 985 #bike taxi
         df = data[:num_train]
         scaler = StandardScaler(df.mean(),df.std())
         train_feas = scaler.transform(df).reshape([-1,df.shape[2]])
@@ -227,7 +239,7 @@ def load_dataset(dataset, batch_size, valid_batch_size= None, test_batch_size=No
         data['x_' + category] = cat_data['x']
         data['y_' + category] = cat_data['y']
     if dataset == 'nyc-bike' or dataset =='nyc-taxi' or dataset =='pems03' \
-        or dataset == 'bos-bike' or dataset == 'bay-bike' or dataset == 'dc-bike' or dataset == 'dc-taxi' or dataset == 'chi-taxi' or dataset== 'dc1-taxi' or dataset == 'dc5-taxi':
+        or dataset == 'bos-bike' or dataset == 'bay-bike' or dataset == 'dc-bike' or dataset == 'dc-taxi' or dataset == 'chi-taxi' or dataset== 'dc1-taxi' or dataset == 'dc5-taxi' or dataset == 'dc6-taxi':
         #print('load_dataset : nyc'+"!"*30)
         scaler = StandardScaler(mean=data['x_train'].mean(), std=data['x_train'].std())
     else:
@@ -235,7 +247,7 @@ def load_dataset(dataset, batch_size, valid_batch_size= None, test_batch_size=No
     # Data format
     for category in ['train', 'val', 'test']:
         if dataset == 'nyc-bike' or dataset =='nyc-taxi' or dataset =='pems03' \
-        or dataset == 'bos-bike' or dataset == 'bay-bike' or dataset == 'dc-bike' or dataset == 'dc-taxi' or dataset == 'chi-taxi' or dataset== 'dc1-taxi' or dataset == 'dc5-taxi':
+        or dataset == 'bos-bike' or dataset == 'bay-bike' or dataset == 'dc-bike' or dataset == 'dc-taxi' or dataset == 'chi-taxi' or dataset== 'dc1-taxi' or dataset == 'dc5-taxi' or dataset == 'dc6-taxi':
             #print('load_dataset : nyc transform'+"!"*30)
             data['x_' + category] = scaler.transform(data['x_' + category])            
         else:
